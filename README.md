@@ -10,6 +10,7 @@
 
 ## 安装
 
+仓库地址：<https://github.com/Fattydogs/seedance-expression-skills>
 
 ### 方式一：克隆仓库（推荐，便于更新）
 
@@ -17,14 +18,14 @@
 
 ```powershell
 git clone https://github.com/Fattydogs/seedance-expression-skills.git
-cd REPO_NAME
+cd seedance-expression-skills
 ```
 
 **macOS / Linux**
 
 ```bash
 git clone https://github.com/Fattydogs/seedance-expression-skills.git
-cd REPO_NAME
+cd seedance-expression-skills
 ```
 
 然后用 **Cursor 打开该文件夹** 作为工作区，项目内的 `.cursor/skills/` 会自动生效。
@@ -39,7 +40,7 @@ cd REPO_NAME
 git clone https://github.com/Fattydogs/seedance-expression-skills.git
 $dest = "$env:USERPROFILE\.cursor\skills\seedance-expression-prompt"
 New-Item -ItemType Directory -Force -Path (Split-Path $dest) | Out-Null
-Copy-Item -Recurse -Force ".\REPO_NAME\.cursor\skills\seedance-expression-prompt" $dest
+Copy-Item -Recurse -Force ".\seedance-expression-skills\.cursor\skills\seedance-expression-prompt" $dest
 ```
 
 **macOS / Linux**
@@ -47,7 +48,7 @@ Copy-Item -Recurse -Force ".\REPO_NAME\.cursor\skills\seedance-expression-prompt
 ```bash
 git clone https://github.com/Fattydogs/seedance-expression-skills.git
 mkdir -p ~/.cursor/skills
-cp -r REPO_NAME/.cursor/skills/seedance-expression-prompt ~/.cursor/skills/
+cp -r seedance-expression-skills/.cursor/skills/seedance-expression-prompt ~/.cursor/skills/
 ```
 
 安装后 **重启 Cursor** 或新开一个 Agent 对话，技能即可被识别。
@@ -72,7 +73,7 @@ cp -r REPO_NAME/.cursor/skills/seedance-expression-prompt ~/.cursor/skills/
 若通过 git 克隆安装：
 
 ```bash
-cd REPO_NAME
+cd seedance-expression-skills
 git pull
 ```
 
@@ -100,6 +101,52 @@ git pull
 ├── muscle-atlas.md   # 肌肉分区与组合参考
 └── examples.md       # 前后对照示例
 ```
+
+## 克隆失败排查（Connection reset / Could not connect）
+
+若出现 `Recv failure: Connection was reset` 或 `Failed to connect to github.com port 443`，说明本机 **访问不到 GitHub**，与仓库名无关。可依次尝试：
+
+### A. 浏览器能打开 GitHub 时 — 用 ZIP 安装（最简单）
+
+1. 打开 <https://github.com/Fattydogs/seedance-expression-skills>
+2. **Code → Download ZIP**，解压
+3. 将 `.cursor/skills/seedance-expression-prompt` 复制到 `%USERPROFILE%\.cursor\skills\`（见上文方式三）
+
+### B. 为 Git 配置代理（你已有 VPN/代理时）
+
+在 PowerShell 中把地址和端口改成你的代理（示例为本地 HTTP 代理）：
+
+```powershell
+git config --global http.proxy http://127.0.0.1:7890
+git config --global https.proxy http://127.0.0.1:7890
+```
+
+取消代理：
+
+```powershell
+git config --global --unset http.proxy
+git config --global --unset https.proxy
+```
+
+### C. 改用 SSH（443 端口，部分网络环境更稳）
+
+```powershell
+git clone git@github.com:Fattydogs/seedance-expression-skills.git
+```
+
+需先在 GitHub 添加 [SSH Key](https://github.com/settings/keys)。若 22 端口被封，可在 `~/.ssh/config` 中设置 `Host github.com` → `Hostname ssh.github.com`、`Port 443`。
+
+### D. 你已在本地开发本仓库时
+
+若在 `e:\Openroad_claude\seedence_skills` 已有完整代码，**不必再 clone**；复制 `.cursor\skills\seedance-expression-prompt` 到个人技能目录即可使用。
+
+### 验证网络
+
+```powershell
+git ls-remote https://github.com/Fattydogs/seedance-expression-skills.git HEAD
+```
+
+能显示一串 commit hash 即表示 Git 已能访问 GitHub。
 
 ## 要求
 
