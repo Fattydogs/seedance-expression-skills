@@ -4,8 +4,8 @@
 
 ## 技能列表
 
-| 技能 | 路径 | 用途 |
-|------|------|------|
+| 技能               | 路径                                         | 用途                                                                                  |
+| ------------------ | -------------------------------------------- | ------------------------------------------------------------------------------------- |
 | 人物表情精准提示词 | `.cursor/skills/seedance-expression-prompt/` | 将大白话表情需求转为肌肉分区 + 三层情绪 + 非对称瑕疵 + 帧级口型时序的 Seedance 提示词 |
 
 ## 安装
@@ -17,14 +17,14 @@
 **Windows（PowerShell）**
 
 ```powershell
-git clone https://github.com/YOUR_USERNAME/REPO_NAME.git
+git clone https://github.com/Fattydogs/seedance-expression-skills.git
 cd REPO_NAME
 ```
 
 **macOS / Linux**
 
 ```bash
-git clone https://github.com/YOUR_USERNAME/REPO_NAME.git
+git clone https://github.com/Fattydogs/seedance-expression-skills.git
 cd REPO_NAME
 ```
 
@@ -37,7 +37,7 @@ cd REPO_NAME
 **Windows（PowerShell）**
 
 ```powershell
-git clone https://github.com/YOUR_USERNAME/REPO_NAME.git
+git clone https://github.com/Fattydogs/seedance-expression-skills.git
 $dest = "$env:USERPROFILE\.cursor\skills\seedance-expression-prompt"
 New-Item -ItemType Directory -Force -Path (Split-Path $dest) | Out-Null
 Copy-Item -Recurse -Force ".\REPO_NAME\.cursor\skills\seedance-expression-prompt" $dest
@@ -46,7 +46,7 @@ Copy-Item -Recurse -Force ".\REPO_NAME\.cursor\skills\seedance-expression-prompt
 **macOS / Linux**
 
 ```bash
-git clone https://github.com/YOUR_USERNAME/REPO_NAME.git
+git clone https://github.com/Fattydogs/seedance-expression-skills.git
 mkdir -p ~/.cursor/skills
 cp -r REPO_NAME/.cursor/skills/seedance-expression-prompt ~/.cursor/skills/
 ```
