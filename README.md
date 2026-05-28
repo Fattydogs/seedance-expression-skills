@@ -10,7 +10,6 @@
 
 ## 安装
 
-将下面命令里的 `YOUR_USERNAME` 和 `REPO_NAME` 换成你的 GitHub 用户名与仓库名（发布到 GitHub 后使用）。
 
 ### 方式一：克隆仓库（推荐，便于更新）
 
